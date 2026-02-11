@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react';
 
-const Workouts = () => {
-  const [workouts, setWorkouts] = useState([]);
+const Activities = () => {
+  const [activities, setActivities] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const apiBaseUrl = `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev/api`;
 
   useEffect(() => {
-    fetchWorkouts();
+    fetchActivities();
   }, []);
 
-  const fetchWorkouts = async () => {
+  const fetchActivities = async () => {
     try {
-      const apiUrl = `${apiBaseUrl}/workouts/`;
+      const apiUrl = `${apiBaseUrl}/activities/`;
       const response = await fetch(apiUrl);
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const data = await response.json();
-      setWorkouts(Array.isArray(data.results || data) ? (data.results || data) : []);
+      setActivities(Array.isArray(data.results || data) ? (data.results || data) : []);
       setLoading(false);
     } catch (err) {
       setError(err.message);
@@ -30,32 +30,34 @@ const Workouts = () => {
 
   return (
     <div className="container mt-4">
-      <h2>Workouts</h2>
+      <h2>Activities</h2>
       <div className="table-responsive">
         <table className="table table-striped table-hover">
           <thead>
             <tr>
-              <th>Title</th>
-              <th>Type</th>
-              <th>Description</th>
-              <th>Duration</th>
+              <th>User</th>
+              <th>Activity Type</th>
+              <th>Duration (min)</th>
+              <th>Calories Burned</th>
+              <th>Date</th>
             </tr>
           </thead>
           <tbody>
-            {workouts.map((workout, index) => (
-              <tr key={workout.id || index}>
-                <td>{workout.title || workout.name}</td>
-                <td>{workout.type || workout.workout_type}</td>
-                <td>{workout.description || 'N/A'}</td>
-                <td>{workout.duration || 'N/A'}</td>
+            {activities.map(activity => (
+              <tr key={activity.id}>
+                <td>{activity.user_name || activity.user}</td>
+                <td>{activity.activity_type}</td>
+                <td>{activity.duration_minutes}</td>
+                <td>{activity.calories_burned}</td>
+                <td>{new Date(activity.created_at).toLocaleDateString()}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <p className="text-muted">Total workouts: {workouts.length}</p>
+      <p className="text-muted">Total activities: {activities.length}</p>
     </div>
   );
 };
 
-export default Workouts;
+export default Activities;

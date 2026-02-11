@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react';
 
-const Workouts = () => {
-  const [workouts, setWorkouts] = useState([]);
+const Leaderboard = () => {
+  const [leaderboard, setLeaderboard] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const apiBaseUrl = `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev/api`;
 
   useEffect(() => {
-    fetchWorkouts();
+    fetchLeaderboard();
   }, []);
 
-  const fetchWorkouts = async () => {
+  const fetchLeaderboard = async () => {
     try {
-      const apiUrl = `${apiBaseUrl}/workouts/`;
+      const apiUrl = `${apiBaseUrl}/leaderboard/`;
       const response = await fetch(apiUrl);
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const data = await response.json();
-      setWorkouts(Array.isArray(data.results || data) ? (data.results || data) : []);
+      setLeaderboard(Array.isArray(data.results || data) ? (data.results || data) : []);
       setLoading(false);
     } catch (err) {
       setError(err.message);
@@ -30,32 +30,34 @@ const Workouts = () => {
 
   return (
     <div className="container mt-4">
-      <h2>Workouts</h2>
+      <h2>Leaderboard</h2>
       <div className="table-responsive">
         <table className="table table-striped table-hover">
           <thead>
             <tr>
-              <th>Title</th>
-              <th>Type</th>
-              <th>Description</th>
-              <th>Duration</th>
+              <th>Rank</th>
+              <th>User</th>
+              <th>Team</th>
+              <th>Total Calories</th>
+              <th>Activities</th>
             </tr>
           </thead>
           <tbody>
-            {workouts.map((workout, index) => (
-              <tr key={workout.id || index}>
-                <td>{workout.title || workout.name}</td>
-                <td>{workout.type || workout.workout_type}</td>
-                <td>{workout.description || 'N/A'}</td>
-                <td>{workout.duration || 'N/A'}</td>
+            {leaderboard.map((entry, index) => (
+              <tr key={entry.id || index}>
+                <td>{index + 1}</td>
+                <td>{entry.user_name || entry.user}</td>
+                <td>{entry.team}</td>
+                <td>{entry.total_calories || 0}</td>
+                <td>{entry.activity_count || 0}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <p className="text-muted">Total workouts: {workouts.length}</p>
+      <p className="text-muted">Total entries: {leaderboard.length}</p>
     </div>
   );
 };
 
-export default Workouts;
+export default Leaderboard;

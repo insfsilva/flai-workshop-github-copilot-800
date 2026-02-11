@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react';
 
-const Workouts = () => {
-  const [workouts, setWorkouts] = useState([]);
+const Teams = () => {
+  const [teams, setTeams] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const apiBaseUrl = `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev/api`;
 
   useEffect(() => {
-    fetchWorkouts();
+    fetchTeams();
   }, []);
 
-  const fetchWorkouts = async () => {
+  const fetchTeams = async () => {
     try {
-      const apiUrl = `${apiBaseUrl}/workouts/`;
+      const apiUrl = `${apiBaseUrl}/teams/`;
       const response = await fetch(apiUrl);
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const data = await response.json();
-      setWorkouts(Array.isArray(data.results || data) ? (data.results || data) : []);
+      setTeams(Array.isArray(data.results || data) ? (data.results || data) : []);
       setLoading(false);
     } catch (err) {
       setError(err.message);
@@ -30,32 +30,32 @@ const Workouts = () => {
 
   return (
     <div className="container mt-4">
-      <h2>Workouts</h2>
+      <h2>Teams</h2>
       <div className="table-responsive">
         <table className="table table-striped table-hover">
           <thead>
             <tr>
-              <th>Title</th>
-              <th>Type</th>
+              <th>Team Name</th>
+              <th>Members</th>
               <th>Description</th>
-              <th>Duration</th>
+              <th>Created At</th>
             </tr>
           </thead>
           <tbody>
-            {workouts.map((workout, index) => (
-              <tr key={workout.id || index}>
-                <td>{workout.title || workout.name}</td>
-                <td>{workout.type || workout.workout_type}</td>
-                <td>{workout.description || 'N/A'}</td>
-                <td>{workout.duration || 'N/A'}</td>
+            {teams.map(team => (
+              <tr key={team.id}>
+                <td>{team.name}</td>
+                <td>{team.member_count || 0}</td>
+                <td>{team.description || 'N/A'}</td>
+                <td>{new Date(team.created_at).toLocaleDateString()}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <p className="text-muted">Total workouts: {workouts.length}</p>
+      <p className="text-muted">Total teams: {teams.length}</p>
     </div>
   );
 };
 
-export default Workouts;
+export default Teams;
