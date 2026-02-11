@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+import 'bootstrap/dist/css/bootstrap.min.css';
+>>>>>>> 4fedf92050d87675b2c8d581474fbbcca349c47f
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
@@ -14,4 +18,10 @@ root.render(
   </React.StrictMode>
 );
 
+<<<<<<< HEAD
+=======
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+>>>>>>> 4fedf92050d87675b2c8d581474fbbcca349c47f
 reportWebVitals();

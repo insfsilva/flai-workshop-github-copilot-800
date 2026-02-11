@@ -1,11 +1,28 @@
 {
   "short_name": "OctoFit",
+<<<<<<< HEAD
   "name": "OctoFit Tracker",
+=======
+  "name": "OctoFit Tracker - Fitness & Team Competition",
+>>>>>>> 4fedf92050d87675b2c8d581474fbbcca349c47f
   "icons": [
     {
       "src": "octofitapp-small.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/png"
+<<<<<<< HEAD
+=======
+    },
+    {
+      "src": "octofitapp-small.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "octofitapp-small.png",
+      "type": "image/png",
+      "sizes": "512x512"
+>>>>>>> 4fedf92050d87675b2c8d581474fbbcca349c47f
     }
   ],
   "start_url": ".",

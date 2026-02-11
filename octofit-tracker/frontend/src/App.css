@@ -192,7 +192,95 @@ p, td, th, label {
   font-size: 1.125rem;
 }
 
+<<<<<<< HEAD
 /* Additional responsive styles and animations */
+=======
+/* Link Styles */
+a {
+  color: #667eea;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #764ba2;
+  text-decoration: none;
+}
+
+/* Modal Styles */
+.modal-content {
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  border-bottom: none;
+}
+
+.modal-title {
+  color: #fff !important;
+  font-weight: 700;
+}
+
+.btn-close {
+  filter: brightness(0) invert(1);
+}
+
+.modal-body {
+  padding: 2rem;
+}
+
+.modal-footer {
+  border-top: 1px solid #dee2e6;
+  padding: 1rem 2rem;
+}
+
+/* Form Styles */
+.form-control, .form-select {
+  border-radius: 8px;
+  border: 2px solid #e0e7ff;
+  padding: 0.75rem;
+  transition: all 0.3s;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+.form-label {
+  font-weight: 600;
+  color: #1e3c72;
+  margin-bottom: 0.5rem;
+}
+
+/* Alert Styles */
+.alert {
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.alert-danger {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+  color: #fff;
+}
+
+/* Home Page Styles */
+.text-center h1 {
+  animation: fadeInDown 0.8s;
+}
+
+.text-center .lead {
+  animation: fadeInUp 0.8s;
+}
+
+>>>>>>> 4fedf92050d87675b2c8d581474fbbcca349c47f
 @keyframes fadeInDown {
   from {
     opacity: 0;
@@ -215,10 +303,63 @@ p, td, th, label {
   }
 }
 
+<<<<<<< HEAD
 .text-center h1 {
   animation: fadeInDown 0.8s;
 }
 
 .text-center .lead {
   animation: fadeInUp 0.8s;
+=======
+/* Card Styles */
+.card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  font-weight: 700;
+  padding: 1rem 1.5rem;
+  border: none;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+/* Badge Styles */
+.badge {
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar-brand {
+    font-size: 1.25rem !important;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .container, .container-fluid {
+    padding: 1rem;
+  }
+>>>>>>> 4fedf92050d87675b2c8d581474fbbcca349c47f
 }
